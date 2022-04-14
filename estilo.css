@@ -6,13 +6,17 @@ header{
     width: 100%;
     height: 80px;
     background-color: #ffffff;
-    display: flex;
+    display: none;
     justify-content: space-between;
     align-items: center;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.05);
     position: fixed;
     top: 0px;
     right: 0px;
+    z-index: 0;
+}
+header.active{
+    display: flex;
 }
 header img{
     width: 75px;
@@ -70,7 +74,8 @@ footer ion-icon{
     background-color: #ffffff;
     z-index: 3;
     font-family: Roboto;
-    transition: all 2000ms;
+    transition: all 1000ms;
+    overflow-y: scroll;
 }
 .sideBar h2{
     font-size: 16px;
@@ -78,11 +83,11 @@ footer ion-icon{
     line-height: 19px;
     letter-spacing: 0em;
     text-align: center;
-    width: 100%;
-    height: 84px;
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    height: 84px;
     padding:0px 44px 0px 44px;
     color: #000000;
 }
@@ -92,11 +97,13 @@ footer ion-icon{
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 2;
     position: fixed;
+    top: 0px;
+    right: 0px;
     display: none;
 }
 .sideBar.active{
     right: 0px;
-    transition:all 2000ms;
+    transition:all 1000ms;
 }
 .fundoSide.active{
     display: flex;
@@ -120,6 +127,8 @@ footer ion-icon{
 .users{
     height: auto;
     width: 100%;
+    display: flex;
+    flex-direction: column;
 }
 .entrada{
     position: fixed;
@@ -136,7 +145,8 @@ footer ion-icon{
     line-height: 25px;
     letter-spacing: 0em;
     text-align: center;
-
+    top: 0%;
+    right: 0%;
 }
 .entrada img{
     width: 130px;
@@ -187,6 +197,7 @@ main div{
     display: flex;
     align-items: center;
     border-radius: 2px;
+    word-wrap: break-word;
 }
 main div span{
     margin:0px 7px
@@ -199,4 +210,19 @@ main .chatMessage{
 }
 main .chatPrivate{
     background: #FFDEDE;
+}
+main .chatMessage p{
+    word-wrap: break-word;
+    width: 100%;
+}
+.usuario img{
+    width: 9px;
+    height: 7px;
+    position: absolute;
+    left: 90.4%;
+    right: 7.2%;
+    display: none;
+}
+.usuario.Selecionada img{
+    display: flex;
 }

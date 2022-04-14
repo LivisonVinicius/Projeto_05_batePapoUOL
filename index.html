@@ -12,39 +12,47 @@
     <title>Document</title>
 </head>
 <body>
+    <!-- ENTRADA -->
     <div class="entrada">
         <img src="imagens/logo 1.png">
         <input type="text" placeholder="Digite seu nome">
         <button class="login" onclick="login()">Entrar</button>
     </div>
+    <!-- ENTRADA -->
+    <!-- HEADER -->
     <header>
         <img src="imagens/logo 1.png">
         <ion-icon name="people" onclick="sideBar()"></ion-icon>
     </header>
+    <!-- HEADER -->
+    <!-- CHAT -->
     <main>
     </main>
+    <!-- CHAT -->
+    <!-- FOOTER -->
     <footer>
         <input type="text" placeholder="Escreva aqui...">
-        <ion-icon name="paper-plane-outline"></ion-icon>
+        <ion-icon name="paper-plane-outline" onclick="enviarMensagem()"></ion-icon>
     </footer>
+    <!-- FOOTER -->
+    <!-- SIDEBAR -->
     <div class="sideBar">
         <h2>Escolha um contato
             para enviar mensagem:
         </h2>
-        <div>
-            <ion-icon name="people"></ion-icon> Todos
+        <div class="usuario Selecionada" onclick="selecionar(this)">
+            <ion-icon name="people"></ion-icon> <p>Todos</p> <img src="imagens/Vector.png" alt="selecionado"/>
         </div>
-        <div class="users">
+        <li class="users">
             
-            
-        </div>
-        <h2>Escolha a visibilidade:</h2>
-        <div class="publico"><ion-icon name="lock-open"></ion-icon>Público</div>
-        <div class="privado"><ion-icon name="lock-closed"></ion-icon>Reservadamente</div>
+        </li>
+        <div><h2>Escolha a visibilidade:</h2></div>
+        
+        <div class="publico privacidade"><ion-icon name="lock-open"></ion-icon>Público</div>
+        <div class="privado privacidade"><ion-icon name="lock-closed"></ion-icon>Reservadamente</div>
     </div>
     <div class="fundoSide" onclick="hideBar()"></div>
-    
-    
+    <!-- SIDEBAR -->
 </body>
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
