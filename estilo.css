@@ -1,0 +1,126 @@
+*{
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+}
+header{
+    width: 100%;
+    height: 80px;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.05);
+    position: fixed;
+    top: 0px;
+    right: 0px;
+}
+header img{
+    width: 75px;
+    height: 53px;
+    margin-left: 22px;
+}
+header ion-icon{
+    width: 45px;
+    height: 45px;
+    margin-right: 21px;
+}
+footer{
+    position: fixed;
+    width: 100%;
+    height: 80px;
+    bottom: 0px;
+    right: 0px;
+    box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+}
+footer input{
+    width: 300px;
+    height: 30px;
+    margin-left: 17px;
+    font-family: Roboto;
+    font-size: 18px;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 21px;
+    letter-spacing: 0em;
+    text-align: left;
+    border: #ffffff;
+}
+input:focus{
+    box-shadow: 0 0 0 0;
+    outline: 0;
+    font-style: normal;
+}
+footer ion-icon{
+    width: 26px;
+    height: 26px;
+    margin-right: 18px;
+}
+main{
+    background-color: #f3f3f3;
+    width: 100%;
+    height: 100%;
+}
+.sideBar{
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0px;
+    right: -259px;
+    height: 100%;
+    width: 259px;
+    background-color: #ffffff;
+    z-index: 3;
+    font-family: Roboto;
+}
+.sideBar h2{
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 19px;
+    letter-spacing: 0em;
+    text-align: center;
+    width: 100%;
+    height: 84px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding:0px 44px 0px 44px;
+    color: #000000;
+}
+.fundoSide{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2;
+    position: fixed;
+    display: none;
+}
+.sideBar.active{
+    right: 0px;
+}
+.fundoSide.active{
+    display: flex;
+}
+.sideBar ion-icon{
+    width: 25px;
+    height: 25px;
+    margin: 0px 7px 0px 17px;
+}
+.sideBar div{
+    width: 100%;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19px;
+    letter-spacing: 0em;
+    text-align: left;
+}
+.users{
+    height: auto;
+    width: 100%;
+}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="estilo.css">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <img src="imagens/logo 1.png">
+        <ion-icon name="people" onclick="sideBar()"></ion-icon>
+    </header>
+    <main>
+
+    </main>
+    <footer>
+        <input type="text" placeholder="Escreva aqui...">
+        <ion-icon name="paper-plane-outline"></ion-icon>
+    </footer>
+    <div class="sideBar">
+        <h2>Escolha um contato
+            para enviar mensagem:
+        </h2>
+        <div>
+            <ion-icon name="people"></ion-icon> Todos
+        </div>
+        <div class="users">
+            
+        </div>
+        <h2>Escolha a visibilidade:</h2>
+        <div class="publico"><ion-icon name="lock-open"></ion-icon>Público</div>
+        <div class="privado"><ion-icon name="lock-closed"></ion-icon>Reservadamente</div>
+    </div>
+    <div class="fundoSide" onclick="hideBar()"></div>
+    
+    
+</body>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<script src="script.js"></script>
+</html>
