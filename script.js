@@ -2,10 +2,14 @@ let nameUser;
 let destinatario="Todos";
 let mensagemDigitada;
 let tipoMensagem="message";
+let tempoVerifica="1"
+let tempoVerificado;
+let footerModo=document.querySelector("footer span")
 function sideBar(){
     document.querySelector(".fundoSide").classList.add("active");
     document.querySelector(".sideBar").classList.add("active");
 }
+
 function hideBar(){
     document.querySelector(".fundoSide").classList.remove("active");
     document.querySelector(".sideBar").classList.remove("active");
@@ -16,6 +20,9 @@ function login(){
     tryLogin.then(function(){
         document.querySelector(".entrada").classList.add("active");
         document.querySelector("header").classList.add("active");
+        setTimeout(function(){
+            document.querySelector(".loading").classList.add("active");
+        },3000)
     })
     tryLogin.catch(function(){
         alert("Usuário já se encontra online.")
@@ -40,26 +47,32 @@ function buscaMensagens(){
             switch(response.data[contador].type){
             case "status":
                 main.innerHTML+=`<div class="chatStatus">
-                <p><span class="time">(${response.data[contador].time})</span> ${response.data[contador].from} ${response.data[contador].text}</p>
+                <p><span class="time">(${response.data[contador].time})</span><strong> ${response.data[contador].from}</strong> ${response.data[contador].text}</p>
             </div>`
+                tempoVerifica=response.data[contador].time
             break
             case "message":
                 main.innerHTML+=`<div class="chatMessage">
-                <p><span class="time">(${response.data[contador].time})</span> ${response.data[contador].from} para ${response.data[contador].to}: ${response.data[contador].text}</p>
+                <p><span class="time">(${response.data[contador].time})</span><strong> ${response.data[contador].from}</strong> para <strong>${response.data[contador].to}</strong>: ${response.data[contador].text}</p>
             </div>`
+                tempoVerifica=response.data[contador].time
             break
             case "private_message":
                 if(response.data[contador].from==nameUser.value ||response.data[contador].to==nameUser.value){
                     main.innerHTML+=`<div class="chatPrivate">
-                <p><span class="time">(${response.data[contador].time})</span> ${response.data[contador].from} reservadamente para ${response.data[contador].to}: ${response.data[contador].text}</p>
+                <p><span class="time">(${response.data[contador].time})</span> ${response.data[contador].from} reservadamente para <strong>${response.data[contador].to}</strong>: ${response.data[contador].text}</p>
             </div>`
+                    tempoVerifica=response.data[contador].time
                 }          
             }
             contador++
         }
-        let screenHeight = "" + window.innerHeight / 8;
-        main.scrollIntoView(false);
-        window.scrollBy(0, screenHeight);
+        if (tempoVerificado!==tempoVerifica) {
+            let screenHeight = "" + window.innerHeight / 8;
+            main.scrollIntoView(false);
+            window.scrollBy(0, screenHeight);
+        }
+        tempoVerificado=tempoVerifica
     })
 }
 function participantsOnline(){
@@ -70,7 +83,7 @@ function participantsOnline(){
         users.innerHTML=""
         while(contador<response.data.length){
             users.innerHTML+= `<div class="usuario" onclick=selecionar(this)>
-            <ion-icon name="people"></ion-icon> <p>${response.data[contador].name}</p> <img src="imagens/Vector.png" alt="selecionado"/>
+            <ion-icon name="person-circle-outline"></ion-icon> <p>${response.data[contador].name}</p> <img src="imagens/Vector.png" alt="selecionado"/>
         </div>`
             contador++
         }
@@ -84,21 +97,42 @@ function enviarMensagem(){
         to:`${destinatario}`,
         text:`${mensagemDigitada.value}`,
         type:`${tipoMensagem}`
-    })
+    });
     promise.then(function(){
         buscaMensagens()
         mensagemDigitada.value=""
-    })
+    });
     promise.catch(function(){
         alert("Usuário não está online")
         window.location.reload()
-    })
+    });
 }
 function selecionar(opcao){
     const opcaoSelecionada = document.querySelector(`.Selecionada`);
+    let footerLegenda=document.querySelector("footer p")
     if (opcaoSelecionada !== null) {
         opcaoSelecionada.classList.remove("Selecionada");
     }
     opcao.classList.add("Selecionada");
     destinatario=opcao.querySelector("p").innerHTML
+    footerLegenda.innerHTML=`Enviando para ${destinatario}`
+}
+function publico(opcao){
+    const opcaoSelecionada = document.querySelector(`.Selecionada.privacidade`);
+    if (opcaoSelecionada !== null) {
+        opcaoSelecionada.classList.remove("Selecionada");
+    }
+    opcao.classList.add("Selecionada");
+    tipoMensagem="message"
+    footerModo.innerHTML=""
+}
+function privado(opcao){
+    const opcaoSelecionada = document.querySelector(`.Selecionada.privacidade`);
+    if (opcaoSelecionada !== null) {
+        opcaoSelecionada.classList.remove("Selecionada");
+    }
+    opcao.classList.add("Selecionada");
+    tipoMensagem="private_message";
+    footerModo.innerHTML="(Reservadamente)"
+
 }

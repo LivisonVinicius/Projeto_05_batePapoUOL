@@ -2,6 +2,9 @@
     font-family: 'Roboto', sans-serif;
     box-sizing: border-box;
 }
+strong{
+    font-weight: 700;
+}
 header{
     width: 100%;
     height: 80px;
@@ -36,15 +39,28 @@ footer{
     right: 0px;
     box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.05);
     display: flex;
+    background-color: #ffffff;
+    flex-direction: column;
+    padding-top: 20px;
+    font-family: Roboto;
+}
+footer div{
+    width: 100%;
+    display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #ffffff;
 }
-footer input{
+footer p{
+    margin-left: 17px;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 25px;
+    color: #505050;
+}
+footer div input{
     width: 300px;
     height: 30px;
     margin-left: 17px;
-    font-family: Roboto;
     font-size: 18px;
     font-style: italic;
     font-weight: 400;
@@ -58,7 +74,7 @@ input:focus{
     outline: 0;
     font-style: normal;
 }
-footer ion-icon{
+footer div ion-icon{
     width: 26px;
     height: 26px;
     margin-right: 18px;
@@ -200,7 +216,8 @@ main div{
     word-wrap: break-word;
 }
 main div span{
-    margin:0px 7px
+    margin:0px 7px;
+    color: #AAAAAA;
 }
 main .chatStatus{
     background: #DCDCDC;
@@ -210,6 +227,14 @@ main .chatMessage{
 }
 main .chatPrivate{
     background: #FFDEDE;
+}
+main .chatPrivate p{
+    word-wrap: break-word;
+    width: 100%;
+}
+main .chatStatus p{
+    word-wrap: break-word;
+    width: 100%;
 }
 main .chatMessage p{
     word-wrap: break-word;
@@ -225,4 +250,36 @@ main .chatMessage p{
 }
 .usuario.Selecionada img{
     display: flex;
+}
+.privacidade img{
+    width: 9px;
+    height: 7px;
+    position: absolute;
+    left: 90.4%;
+    right: 7.2%;
+    display: none;
+}
+.privacidade.Selecionada img{
+    display: flex;
+}
+.loading{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1;
+    top: 0%;
+    right: 0%;
+}
+.loading.active{
+    display: none;
+}
+.loading img{
+    width: 130px;
+    height: 92px;
+    margin-top: 72px;
+    margin-bottom: 94px;
 }
