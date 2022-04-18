@@ -1,10 +1,23 @@
 let nameUser;
 let destinatario="Todos";
-let mensagemDigitada;
+let mensagemDigitada=document.querySelector("footer input");
 let tipoMensagem="message";
 let tempoVerifica="1"
 let tempoVerificado;
+let inputEntrada=document.querySelector(".entrada input")
 let footerModo=document.querySelector("footer span")
+inputEntrada.addEventListener("keyup", function(event) {
+    if (event.keyCode === 13) {
+      event.preventDefault();
+      login();
+    }
+});
+mensagemDigitada.addEventListener("keyup", function(event) {
+    if (event.keyCode === 13) {
+      event.preventDefault();
+      enviarMensagem();
+    }
+});
 function sideBar(){
     document.querySelector(".fundoSide").classList.add("active");
     document.querySelector(".sideBar").classList.add("active");
@@ -116,6 +129,7 @@ function selecionar(opcao){
     opcao.classList.add("Selecionada");
     destinatario=opcao.querySelector("p").innerHTML
     footerLegenda.innerHTML=`Enviando para ${destinatario}`
+    mensagemDigitada.value=""
 }
 function publico(opcao){
     const opcaoSelecionada = document.querySelector(`.Selecionada.privacidade`);
@@ -134,5 +148,4 @@ function privado(opcao){
     opcao.classList.add("Selecionada");
     tipoMensagem="private_message";
     footerModo.innerHTML="(Reservadamente)"
-
 }
